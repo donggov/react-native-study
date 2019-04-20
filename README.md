@@ -1,7 +1,9 @@
 ### React Native Study
 
+
 ## Spec
 react native + expo + react-navigation + react-native-elements
+
 
 ## 기본 세팅
 * nodejs 설치 : https://nodejs.org/ko/download/
@@ -11,9 +13,9 @@ react native + expo + react-navigation + react-native-elements
 * yarn global add create-react-native-app
 * yarn global add expo-cli
 
+
 ## Project 세팅
 * expo-cli init react-native-study
-
 * cd react-native-study
 * yarn add react-navigation
 * yarn add react-native-elements
