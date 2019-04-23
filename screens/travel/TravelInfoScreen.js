@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, Button } from "react-native";
 
 export default class TravelInfoScreen extends Component {
   // static navigationOptions = ({ navigation }) => {
@@ -12,7 +12,7 @@ export default class TravelInfoScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Travel Information</Text>
       </View>
     );
