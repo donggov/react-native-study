@@ -1,46 +1,206 @@
 import React, { Component } from "react";
-import { View } from "react-native";
-import { Header, Text, Button } from "react-native-elements";
+import { View, SafeAreaView, FlatList } from "react-native";
+import {
+  Header,
+  Text,
+  Button,
+  ListItem,
+  SearchBar
+} from "react-native-elements";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 
 class CreateStep1Screen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerLeft: (
-        <Button title="Cancel" onPress={() => navigation.navigate("Main")} />
-      ),
-      title: "Country",
-      headerRight: (
-        <Button
-          title="Next"
-          onPress={() => navigation.navigate("CreateStep2")}
-        />
-      ),
-      gesturesEnabled: false
-    };
+  state = {
+    search: ""
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
   };
 
   render() {
+    const { search } = this.state;
+
+    const list = [
+      {
+        name: "Korea",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
+        // subtitle: 'Vice President'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "Korea",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
+        // subtitle: 'Vice President'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "Korea",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
+        // subtitle: 'Vice President'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "Korea",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
+        // subtitle: 'Vice President'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      },
+      {
+        name: "France",
+        avatar_url:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+        // subtitle: 'Vice Chairman'
+      }
+    ];
+
+    keyExtractor = (item, index) => index.toString();
+
+    renderItem = ({ item }) => (
+      <ListItem
+        title={item.name}
+        subtitle={item.subtitle}
+        leftAvatar={{ source: { uri: item.avatar_url } }}
+        topDivider={true}
+        containerStyle={{ paddingBottom: 5, paddingTop: 5 }}
+        checkBox={{}}
+      />
+    );
+
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Create Step1</Text>
+      <View>
+        <Header
+          leftComponent={
+            <Button
+              title="Cancel"
+              onPress={() => this.props.navigation.navigate("Main")}
+            />
+          }
+          centerComponent={{ text: "Create Step 1" }}
+          rightComponent={
+            <Button
+              title="Next"
+              onPress={() => this.props.navigation.navigate("CreateStep2")}
+            />
+          }
+        />
+        <SearchBar
+          placeholder="Type Here..."
+          lightTheme={true}
+          round={true}
+          placeholder="Name or code"
+          onChangeText={this.updateSearch}
+          value={search}
+        />
+        <SafeAreaView>
+          <FlatList
+            keyExtractor={keyExtractor}
+            data={list}
+            renderItem={renderItem}
+          />
+        </SafeAreaView>
       </View>
     );
   }
 }
 
 class CreateStep2Screen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerLeft: <Button title="Prev" onPress={() => navigation.goBack()} />,
-    title: "Information",
-    headerRight: (
-      <Button title="Save" onPress={() => navigation.navigate("Main")} />
-    )
-  });
-
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View>
+        <Header
+          leftComponent={
+            <Button
+              title="Prev"
+              onPress={() => this.props.navigation.goBack()}
+            />
+          }
+          centerComponent={{ text: "Create Step 2" }}
+          rightComponent={
+            <Button
+              title="Save"
+              onPress={() => this.props.navigation.navigate("Main")}
+            />
+          }
+        />
         <Text>Create Step2</Text>
       </View>
     );
@@ -54,7 +214,8 @@ export default createAppContainer(
       CreateStep2: CreateStep2Screen
     },
     {
-      initialRouteName: "CreateStep1"
+      initialRouteName: "CreateStep1",
+      headerMode: "none"
     }
   )
 );
